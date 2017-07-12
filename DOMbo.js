@@ -137,7 +137,7 @@ class DOMNodeCollection {
     if (arg instanceof HTMLElement){
        results = arg.outerHTML;
     } else if (arg instanceof DOMNodeCollection) {
-      arg.htmlEls.forEach((el)=>{
+      arg.htmlEls.forEach((el)=> {
         results += el.outerHTML;
       });
     } else {
@@ -153,7 +153,7 @@ class DOMNodeCollection {
     if (!value) {
       let returns = [];
       this.htmlEls.forEach( (el) => {
-        if (el.getAttribute(name)){
+        if (el.getAttribute(name)) {
           returns.push(el.getAttribute(name));
         }
       });
@@ -190,15 +190,16 @@ class DOMNodeCollection {
     this.htmlEls.forEach( (el) => {
       if (!elderly.includes(el.parentElement) ) {
          elderly.push(el.parentElement);
-       }
+      }
     });
+
     return new DOMNodeCollection(elderly);
   }
 
   find(selector){
     let objs =[];
-    this.htmlEls.forEach( (el)=> {
-      objs = objs.concat(Array.from(el.querySelectorAll(selector)  ) );
+    this.htmlEls.forEach( (el) => {
+      objs = objs.concat(Array.from(el.querySelectorAll(selector)));
     });
     return new DOMNodeCollection(objs);
   }
